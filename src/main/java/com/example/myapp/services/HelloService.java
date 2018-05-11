@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
     @RestController
     public class HelloService {
+
         @Autowired
         HelloRepository repository;
 
         @GetMapping("/api/hello")
         public Iterable<Hello> findAllHellos() {
+
             return repository.findAll();
         }
     }
