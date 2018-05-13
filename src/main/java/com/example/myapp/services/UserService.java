@@ -28,6 +28,15 @@ public class UserService  {
 
     }
 
+
+    @PostMapping("/api/login")
+    public List<User> login(@RequestBody User user){
+
+
+        return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+
+    }
+
     @DeleteMapping("/api/user/{userId}")
     public void deleteUser(@PathVariable("userId") int id){
 
@@ -66,4 +75,6 @@ public class UserService  {
 
 
     }
+
+
 }
