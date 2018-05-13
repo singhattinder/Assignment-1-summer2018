@@ -6,6 +6,7 @@
     var $updateBtn;
     var $username;
     var userIdGlobal;
+    var $logoutBtn;
 
     var userService = new UserServiceClient();
 
@@ -16,10 +17,17 @@
         $username = $('#username');
         $updateBtn = $('#updateBtn')
             .click(updateUser);
+        $logoutBtn = $('#logoutBtn')
+            .click(logout);
 
-        findUserById(242);
-        userIdGlobal=242;
 
+        //findUserById(242);
+        //userIdGlobal=242;
+
+    }
+
+    function logout() {
+        location.href="../login/login.template.client.html"
     }
 
     function findUserById(userId) {

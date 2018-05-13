@@ -17,27 +17,35 @@
         $password = $('#password');
         $username = $('#username');
         $forgotpassword = $('#forgotpassword');
-        $signup = $('#signup');
+        $signup = $('#signup')
+            .click(signup);
+
+    }
+
+    function signup() {
+        location.href="../register/register.template.client.html"
+
 
     }
 
     function login() {
-       // console.log("login clicked");
         username = $username.val();
         password = $password.val()
-       // alert(password);
+
 
 
         userService.login(username, password).then(function (response) {
+
             response.json().then(function(data) {
-                alert("Welcome "+data.username);
+            goURL();
             });
-        });
+   });
 
     }
 
-     // function success(response) {
-     //
-     //     console.log(response.data);
-     // }
+    function goURL() {
+        location.href="../profile/profile.template.client.html"  // change url to your's
+    }
+
+
 })();
