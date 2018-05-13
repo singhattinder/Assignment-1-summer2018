@@ -30,10 +30,10 @@ public class UserService  {
 
 
     @PostMapping("/api/login")
-    public List<User> login(@RequestBody User user){
+    public User login(@RequestBody User user){
 
 
-        return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+        return (User) repository.findUserByCredentials(user.getUsername(), user.getPassword());
 
     }
 
