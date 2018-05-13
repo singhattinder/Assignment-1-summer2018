@@ -1,4 +1,4 @@
-function Utilities() {
+function UtilitiesClient() {
     this.isEmpty = isEmpty;
 
 

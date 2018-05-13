@@ -8,7 +8,7 @@
     var $signup;
 
     var userService = new UserServiceClient();
-    var util = new Utilities();
+    var util = new UtilitiesClient();
 
 
     function init() {

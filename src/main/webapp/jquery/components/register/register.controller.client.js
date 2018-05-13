@@ -10,6 +10,7 @@
     var $lastName;
 
     var userService = new UserServiceClient();
+    var util = new UtilitiesClient();
 
 
     function init() {
@@ -35,6 +36,17 @@
 
     function register() {
         //console.log("register called");
+
+        if ((util.isEmpty($firstName.val() || util.isEmpty($lastName.val())) || (util.isEmpty($password.val()) || util.isEmpty($username.val())))) {
+
+            alert("All feilds are mandatory");
+            console.log(util.isEmpty($firstName.val()));
+
+        }
+        else {
+
+
+
         if ($password.val()===$verifyPassword.val()){
 
             var user = {
@@ -43,7 +55,6 @@
                 username:$username.val(),
                 password:$password.val()
             };
-            
 
             
             
@@ -69,6 +80,9 @@
         else {
         alert("password not matched");
         }
+
+
+            }
     }
 
 
