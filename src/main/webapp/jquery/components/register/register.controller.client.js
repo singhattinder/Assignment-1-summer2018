@@ -6,6 +6,8 @@
     var $verifyPassword;
     var $login;
     var $registerBtn;
+    var $firstName;
+    var $lastName;
 
     var userService = new UserServiceClient();
 
@@ -19,6 +21,8 @@
         $verifyPassword = $('#verifyPassword');
         $login = $('#login')
             .click(loginUser);
+        $firstName = $('#firstName');
+        $lastName = $('#lastName');
 
     }
 
@@ -31,9 +35,50 @@
 
     function register() {
         //console.log("register called");
-        userService.createUser()
+        if ($password.val()===$verifyPassword.val()){
 
+            var user = {
+                firstName:$firstName.val(),
+                lastName:$lastName.val(),
+                username:$username.val(),
+                password:$password.val()
+            };
+            
+            if ($firstName.val().length===0 || value===""){
+
+                
+            }
+            
+            
+            userService.register(user).then(function (response) {
+
+                response.json().then(function(data) {
+
+                    if (data.username===$username.val() && data.id===0)
+                    {
+                        alert("User already Exits");
+                    }
+
+                    else {
+                        alert("You are registered");
+                    }
+
+
+                });
+
+            });
+
+        }
+        else {
+        alert("password not matched");
+        }
     }
+
+
+
+
+
+
 
 
 

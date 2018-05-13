@@ -37,7 +37,15 @@
         userService.login(username, password).then(function (response) {
 
             response.json().then(function(data) {
-            goURL();
+                {
+                    if (data.username===$username.val()) {
+                        goURL();
+                    }
+                    else {
+                        alert("Login failed");
+                    }
+                }
+
             });
    });
 
