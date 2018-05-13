@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserService  {
@@ -31,5 +32,38 @@ public class UserService  {
     public void deleteUser(@PathVariable("userId") int id){
 
          repository.deleteById(id);
+    }
+
+    @GetMapping("/api/user/{userId}")
+    public User findUserById(@PathVariable("userId") int id){
+
+        Optional<User> data =  repository.findById(id);
+
+         if(data.isPresent()){
+             return data.get();
+         }
+         return null;
+
+         }
+
+    @PutMapping("/api/user/{userId}")
+    public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser){
+
+        Optional<User> data =  repository.findById(id);
+
+        if(data.isPresent()){
+            User user = data.get();
+
+            if (!(user.getFirstName().isEmpty() && user.getLastName().isEmpty())) {
+                user.setFirstName(newUser.getFirstName());
+                user.setLastName(newUser.getLastName());
+                repository.save(user);
+                System.out.print(user.getId());
+                return user;
+            }
+        }
+        return null;
+
+
     }
 }
