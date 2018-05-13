@@ -44,10 +44,7 @@
                 password:$password.val()
             };
             
-            if ($firstName.val().length===0 || value===""){
 
-                
-            }
             
             
             userService.register(user).then(function (response) {

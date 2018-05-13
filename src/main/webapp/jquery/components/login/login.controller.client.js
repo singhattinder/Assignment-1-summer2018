@@ -8,6 +8,7 @@
     var $signup;
 
     var userService = new UserServiceClient();
+    var util = new Utilities();
 
 
     function init() {
@@ -32,22 +33,31 @@
         username = $username.val();
         password = $password.val()
 
+        if (!(util.isEmpty($username.val()) || util.isEmpty($password.val()))){
+            userService.login(username, password).then(function (response) {
 
-
-        userService.login(username, password).then(function (response) {
-
-            response.json().then(function(data) {
-                {
-                    if (data.username===$username.val()) {
-                        goURL();
+                response.json().then(function(data) {
+                    {
+                        if (data.username===$username.val()) {
+                            goURL();
+                        }
+                        else {
+                            alert("Username/Password incorrect!");
+                        }
                     }
-                    else {
-                        alert("Login failed");
-                    }
-                }
 
+                });
             });
-   });
+
+
+        }
+        else {
+            alert("Both feilds are required");
+        }
+
+
+
+
 
     }
 
