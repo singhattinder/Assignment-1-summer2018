@@ -116,6 +116,10 @@ public class UserService  {
             if (!(user.getFirstName().isEmpty() && user.getLastName().isEmpty())) {
                 user.setFirstName(newUser.getFirstName());
                 user.setLastName(newUser.getLastName());
+                user.setEmail(newUser.getEmail());
+                user.setPhone(newUser.getPhone());
+                user.setDateOfBirth(newUser.getDateOfBirth());
+                user.setRole(newUser.getRole());
                 repository.save(user);
                 System.out.print(user.getId());
                 return user;

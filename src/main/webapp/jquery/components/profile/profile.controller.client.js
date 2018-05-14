@@ -7,6 +7,10 @@
     var $username;
     var userIdGlobal;
     var $logoutBtn;
+    var $dateOfBirth;
+    var $phone;
+    var $role;
+    var $email;
 
 
     var userService = new UserServiceClient();
@@ -14,6 +18,9 @@
     function init() {
 
         $firstName = $('#firstName');
+        $dateOfBirth = $('#dateOfBirth');
+        $phone = $('#phone');
+        $email = $('#email');
         $lastName = $('#lastName');
         $username = $('#username');
         $updateBtn = $('#updateBtn')
@@ -46,6 +53,10 @@
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
         $username.val(user.username);
+        $dateOfBirth.val(user.dateOfbirth);
+        $phone.val(user.phone);
+        $email.valueOf(user.email);
+
     }
 
     function updateUser() {
@@ -54,8 +65,13 @@
             firstName:$firstName.val(),
             lastName:$lastName.val(),
             username:$username.val(),
-            id:userIdGlobal
+            id:userIdGlobal,
+            dateOfbirth:$dateOfBirth.val(),
+            phone:$phone.val(),
+            email:$email.val()
         };
+
+
         //console.log("user id update user");
 
         userService.updateUser(userIdGlobal, user).then(success);
