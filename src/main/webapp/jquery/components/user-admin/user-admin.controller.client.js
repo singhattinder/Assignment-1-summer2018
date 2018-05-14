@@ -82,7 +82,7 @@
             .parent()
             .attr('id');
 
-        console.log(userId);
+
 
     }
 

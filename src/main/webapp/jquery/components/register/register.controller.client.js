@@ -10,7 +10,7 @@
     var $lastName;
 
     var userService = new UserServiceClient();
-    var util = new UtilitiesClient();
+    var util = new UserUtilitiesClient();
 
 
     function init() {

@@ -8,6 +8,7 @@
     var userIdGlobal;
     var $logoutBtn;
 
+
     var userService = new UserServiceClient();
 
     function init() {
@@ -20,9 +21,11 @@
         $logoutBtn = $('#logoutBtn')
             .click(logout);
 
+        var params = new URLSearchParams(location.search.slice(1));
+        var userId = params.get("id");
 
-        //findUserById(242);
-        //userIdGlobal=242;
+        findUserById(userId);
+        userIdGlobal=userId;
 
     }
 

@@ -8,7 +8,7 @@
     var $signup;
 
     var userService = new UserServiceClient();
-    var util = new UtilitiesClient();
+    var util = new UserUtilitiesClient();
 
 
     function init() {
@@ -39,7 +39,7 @@
                 response.json().then(function(data) {
                     {
                         if (data.username===$username.val()) {
-                            goURL();
+                            goURL(data.id);
                         }
                         else {
                             alert("Username/Password incorrect!");
@@ -61,8 +61,9 @@
 
     }
 
-    function goURL() {
-        location.href="../profile/profile.template.client.html"  // change url to your's
+    function goURL(id) {
+        location.href="../profile/profile.template.client.html"+"?id="+id // change url to your's
+
     }
 
 
