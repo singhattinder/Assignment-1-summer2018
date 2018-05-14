@@ -11,6 +11,7 @@
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
+        $('#searchUser').click(searchUser);
 
         findAllUsers();
     }
@@ -28,6 +29,7 @@
         var password = $('#passwordFld').val();
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
+
 
         var user = {
             username: username,
@@ -82,8 +84,36 @@
             .parent()
             .attr('id');
 
+        $('#userId').click(function () {
+            var text = $('.username').text();
+            var input = $('<input type="text" placeholder="' + text + '" />')
+            $('.username').text('').append(input);
+            var text = $('.username').text();
+
+            var input = $('<input type="text" placeholder="' + text + '" />')
+            $('.firstName').text('').append(input);
+            var text = $('.firstName').text();
+
+            var input = $('<input type="text" placeholder="' + text + '" />')
+            $('.lastName').text('').append(input);
+            var text = $('.lastName').text();
+
+        })
 
 
+
+
+
+        console.log(userId);
+
+    }
+    
+
+    
+    function searchUser() {
+
+
+        
     }
 
 })();
