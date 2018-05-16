@@ -18,6 +18,9 @@
     }
 
     function findAllUsers() {
+
+
+
         userService
             .findAllUsers()
             .then(renderUsers);
@@ -52,14 +55,35 @@
                 role: roleFld
             };
 
-            userService
-                .createUser(user)
-                .then(findAllUsers);
+
+            userService.register(user).then(function (response) {
+
+                response.json().then(function(data) {
+
+                    if (data.username === username && data.id===0)
+                    {
+                        alert("User already Exits");
+                    }
+
+                    else if (data.id>0) {
+                        findAllUsers();
+
+                    }
+
+
+                });
+
+            });
+
+
         }
     }
 
     function renderUsers(users) {
         tbody.empty();
+
+
+
         for(var i=0; i<users.length; i++) {
             var user = users[i];
             var clone = template.clone();
@@ -188,7 +212,10 @@
             role: $('#roleFld').val()
         };
 
+
         userService.updateUser(id, user).then(findAllUsers);
+
+
 
     }
 

@@ -73,6 +73,7 @@
 
                     else {
                         alert("You are registered");
+                        location.href="../login/login.template.client.html"
                     }
 
 
