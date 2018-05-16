@@ -44,7 +44,6 @@
 
         else {
 
-
             var user = {
                 username: username,
                 password: password,
@@ -133,15 +132,68 @@
     }
 
     function editUser(event) {
+
+        tbody.empty();
         var editBtn = $(event.currentTarget);
         var userId = editBtn
             .parent()
             .parent()
             .attr('id');
 
-        return userId;
+        var user =  userService.findUserById(userId).then(function (response) {
+
+
+            var username = $('#usernameFld');
+            var password = $('#passwordFld');
+            var firstName = $('#firstNameFld');
+            var lastName = $('#lastNameFld');
+            var roleFld = $('#roleFld');
+
+
+            //console.log(user);
+
+            username.attr('placeholder', response.username);
+            username.val(response.username);
+
+            password.attr('placeholder', response.password);
+            password.val(response.password);
+
+            firstName.attr('placeholder', response.firstName);
+            firstName.val(response.firstName);
+
+            lastName.attr('placeholder', response.lastName);
+            lastName.val(response.lastName);
+
+            roleFld.attr('placeholder', response.role);
+            roleFld.val(response.role);
+
+
+        });
+
+
+        $('#updateUser').click({pram: userId}, updateUser);
 
     }
+
+    function updateUser(event) {
+
+        id = event.data.pram
+
+
+        var user = {
+            username: $('#usernameFld').val(),
+            password: $('#passwordFld').val(),
+            firstName: $('#firstNameFld').val(),
+            lastName: $('#lastNameFld').val(),
+            role: $('#roleFld').val()
+        };
+
+        userService.updateUser(id, user).then(findAllUsers);
+
+    }
+
+
+
 
     function searchUser() {
 
