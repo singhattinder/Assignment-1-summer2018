@@ -24,7 +24,19 @@
 
 
         if (newPassword === verifyPassword){
-           // userService.updateUser()
+            userService.resetPassword(newPassword).then(function (response) {
+                console.log(response.flag);
+
+                if(response.flag==1){
+
+                    alert("Password changed successfully");
+                    location.href="../login/login.template.client.html";
+                }
+                else {
+                    alert("Something went wrong");
+                }
+
+            });
         }
 
         else {

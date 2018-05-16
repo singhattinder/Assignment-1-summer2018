@@ -9,6 +9,7 @@ function UserServiceClient() {
     this.searchUser = searchUser;
     this.mailSender = mailSender;
     this.codeVerify = codeVerify;
+    this.resetPassword = resetPassword;
     this.url =
         '/api/user';
     this.loginUrl =
@@ -167,6 +168,25 @@ function UserServiceClient() {
                 return response.json();
             });
         
+    }
+
+    function resetPassword(password) {
+
+        var usr = {password:password};
+
+        return fetch(self.verify,{
+            method:'post',
+            body:JSON.stringify(usr),
+            headers:{
+                'content-type':'application/json'
+            }
+
+        })
+            .then(function(response){
+                return response.json();
+            });
+
+
     }
 
 

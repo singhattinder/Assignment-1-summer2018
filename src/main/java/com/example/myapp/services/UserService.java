@@ -22,6 +22,7 @@ import java.util.Optional;
 public class UserService  {
 
     int recoveryVariable = 0;
+    String recoveryEmail = null;
 
 
 
@@ -157,7 +158,7 @@ public class UserService  {
     @PostMapping("/api/email")
     public Response mailSender(@RequestBody String emailId){
 
-        SendMail email =null;
+        SendMail email = null;
 
         try{
             email = new ObjectMapper().readValue(emailId, SendMail.class);
@@ -168,12 +169,15 @@ public class UserService  {
         }
 
         recoveryVariable = Utilities.util();
+        recoveryEmail = email.getEmail();
+
+        System.out.println("Variable:   "+recoveryVariable);
+
 
 
         Email from = new Email("admin@web-dev-jose.com");
         String subject = "Resetting the password";
 
-        System.out.println("email ID receiver  "+emailId);
 
         Email to = new Email(email.getEmail());
         Content content = new Content("text/plain", "Enter this key to reset password: "+recoveryVariable);
@@ -217,6 +221,31 @@ public class UserService  {
 
             return obj;
         }
+
+    }
+
+    @PostMapping("/api/verify")
+    public JSONObject passwordReset(@RequestBody String password){
+
+        SendMail passwordNew = null;
+
+        try{
+            passwordNew = new ObjectMapper().readValue(password, SendMail.class);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+       User usr = repository.findUserByEmail(recoveryEmail);
+       usr.setPassword(passwordNew.getPassword());
+       repository.save(usr);
+
+        JSONObject obj=new JSONObject();
+        obj.put("flag","1");
+
+        return obj;
+
 
     }
 
