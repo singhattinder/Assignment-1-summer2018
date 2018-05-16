@@ -8,6 +8,7 @@ function UserServiceClient() {
     this.login = login;
     this.searchUser = searchUser;
     this.mailSender = mailSender;
+    this.codeVerify = codeVerify;
     this.url =
         '/api/user';
     this.loginUrl =
@@ -20,6 +21,8 @@ function UserServiceClient() {
         '/api/search';
     this.email =
         '/api/email';
+    this.verify =
+        '/api/verify';
     var self = this;
     
     
@@ -155,7 +158,14 @@ function UserServiceClient() {
 
     }
     
-    function codeVerify() {
+    function codeVerify(code) {
+
+        return fetch(self.verify + '/' + code,{
+            method:'get'
+        })
+            .then(function (response) {
+                return response.json();
+            });
         
     }
 

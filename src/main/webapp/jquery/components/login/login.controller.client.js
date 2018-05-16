@@ -17,7 +17,8 @@
             .click(login);
         $password = $('#password');
         $username = $('#username');
-        $forgotpassword = $('#forgotpassword');
+        $forgotpassword = $('#forgotpassword')
+            .click(forgotpassword);
         $signup = $('#signup')
             .click(signup);
 
@@ -62,6 +63,11 @@
 
 
 
+
+    }
+
+    function forgotpassword() {
+        location.href="../forgot-password/forgot-password.template.client.html"
 
     }
 

@@ -23,7 +23,8 @@
 
             if(response.statusCode===202)
             {
-                alert("Mail Send Please check your email");
+                alert("Mail Send! Please check your email");
+                location.href="../password-verify/password-verify.template.client.html";
             }
             else {
                 alert("Something went wrong!");

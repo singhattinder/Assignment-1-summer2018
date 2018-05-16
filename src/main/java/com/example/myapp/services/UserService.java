@@ -9,6 +9,7 @@ import com.example.myapp.utils.Utilities;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sendgrid.*;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -193,6 +194,29 @@ public class UserService  {
             System.out.println(ex);
         }
         return response;
+
+    }
+
+
+
+    @GetMapping("/api/verify/{code}")
+    public JSONObject verify(@PathVariable("code") int code){
+
+        if (recoveryVariable == code){
+
+            JSONObject obj=new JSONObject();
+            obj.put("flag","1");
+
+
+            return obj;
+        }
+        else
+        {
+            JSONObject obj=new JSONObject();
+            obj.put("flag","0");
+
+            return obj;
+        }
 
     }
 
