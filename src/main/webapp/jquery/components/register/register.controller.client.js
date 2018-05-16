@@ -81,16 +81,8 @@
         alert("password not matched");
         }
 
-
             }
     }
-
-
-
-
-
-
-
 
 
 })();

@@ -6,6 +6,7 @@ function UserServiceClient() {
     this.updateUser = updateUser;
     this.register = register;
     this.login = login;
+    this.searchUser = searchUser;
     this.url =
         'http://localhost:8080/api/user';
     this.loginUrl =
@@ -14,6 +15,8 @@ function UserServiceClient() {
         'http://localhost:8080/api/register';
     this.profile =
         'http://localhost:8080/api/profile';
+    this.search =
+        'http://localhost:8080/api/search';
     var self = this;
     
     
@@ -111,6 +114,23 @@ function UserServiceClient() {
 
 
             });
+    }
+
+    function searchUser(user) {
+
+        return fetch(self.search,{
+            method:'post',
+            body:JSON.stringify(user),
+            headers:{
+                'content-type':'application/json'
+            }
+
+        })
+            .then(function(response){
+                return response.json();
+            });
+
+
     }
 
 

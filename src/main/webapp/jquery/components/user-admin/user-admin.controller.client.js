@@ -5,7 +5,8 @@
 
     var tbody;
     var template;
-    var userService = new UserServiceClient()
+    var userService = new UserServiceClient();
+    var util = new UserUtilitiesClient();
 
     function main() {
         tbody = $('tbody');
@@ -69,6 +70,42 @@
         }
     }
 
+
+    function renderUser(user) {
+        tbody.empty();
+
+        if (user.id===-1) {
+
+            alert("User not found, Try again!");
+            findAllUsers();
+        }
+        else {
+            var user = user;
+
+
+            var clone = template.clone();
+
+            clone.attr('id', user.id);
+
+            clone.find('.delete').click(deleteUser);
+            clone.find('.edit').click(editUser);
+
+            clone.find('.username')
+                .html(user.username);
+            clone.find('.firstName')
+                .html(user.firstName);
+            clone.find('.lastName')
+                .html(user.lastName);
+            clone.find('#role')
+                .html(user.role);
+            tbody.append(clone);
+        }
+
+
+
+
+    }
+
     function deleteUser(event) {
         var deleteBtn = $(event.currentTarget);
         var userId = deleteBtn
@@ -95,13 +132,41 @@
     function searchUser() {
 
         var username = $('#usernameFld').val();
+        var password = $('#passwordFld').val();
+        var firstName = $('#firstNameFld').val();
+        var lastName = $('#lastNameFld').val();
+
+        var user = {
+            username: username
+        };
+
+        console.log(util.isEmpty(firstName));
+        console.log(util.isEmpty(lastName));
+
+        if(util.isEmpty(username)){
+
+
+            alert("Please Enter A User name first");
+
+        }
+
+        else if ((util.isEmpty(firstName) && util.isEmpty(lastName))) {
+
+            userService
+                .searchUser(user)
+                .then(renderUser);
+
+
+        }
+
+        else {
+
+            alert("Please search with username only");
+
+        }
+
 
     }
-
-
-    
-
-    
 
 
 })();
