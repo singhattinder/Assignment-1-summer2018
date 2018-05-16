@@ -11,16 +11,23 @@
 
         $resetBtn = $('#resetBtn')
             .click(mailSender);
-        $emailFld = ('#emailFld');
-
+        $emailFld = $('#emailFld');
 
     }
 
     function mailSender() {
 
-        userService.mailSender("attinder.saini@gmail.com").then(function (response) {
+        emailId = $emailFld.val();
 
-            console.log(response);
+        userService.mailSender(emailId).then(function (response) {
+
+            if(response.statusCode===202)
+            {
+                alert("Mail Send Please check your email");
+            }
+            else {
+                alert("Something went wrong!");
+            }
 
         });
 

@@ -1,9 +1,14 @@
 package com.example.myapp.services;
 
 
+import com.example.myapp.models.SendMail;
 import com.example.myapp.models.User;
 import com.example.myapp.repositories.UserRepository;
+import com.example.myapp.utils.Utilities;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sendgrid.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +19,8 @@ import java.util.Optional;
 
 @RestController
 public class UserService  {
+
+    int recoveryVariable = 0;
 
 
 
@@ -146,12 +153,29 @@ public class UserService  {
 
     }
 
-    @GetMapping("/api/email")
-    public Response mailSender(){
-        Email from = new Email("abc@example.com");
-        String subject = "Sending with SendGrid is Fun";
-        Email to = new Email("attinder.saini@gmail.com");
-        Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
+    @PostMapping("/api/email")
+    public Response mailSender(@RequestBody String emailId){
+
+        SendMail email =null;
+
+        try{
+            email = new ObjectMapper().readValue(emailId, SendMail.class);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+        recoveryVariable = Utilities.util();
+
+
+        Email from = new Email("admin@web-dev-jose.com");
+        String subject = "Resetting the password";
+
+        System.out.println("email ID receiver  "+emailId);
+
+        Email to = new Email(email.getEmail());
+        Content content = new Content("text/plain", "Enter this key to reset password: "+recoveryVariable);
         Mail mail = new Mail(from, subject, to, content);
         Response response = null;
 

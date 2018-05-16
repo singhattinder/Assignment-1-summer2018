@@ -119,11 +119,20 @@ function UserServiceClient() {
             });
     }
 
-    function mailSender() {
+    function mailSender(emailId) {
 
-        return fetch(self.email)
+        var emailJson = {email:emailId};
+
+        return fetch(self.email,{
+            method:'post',
+            body:JSON.stringify(emailJson),
+            headers:{
+                'content-type':'application/json'
+            }
+
+        })
             .then(function(response){
-                return response;
+                return response.json();
             });
 
 
@@ -144,6 +153,10 @@ function UserServiceClient() {
             });
 
 
+    }
+    
+    function codeVerify() {
+        
     }
 
 
