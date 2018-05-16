@@ -31,18 +31,32 @@
         var lastName = $('#lastNameFld').val();
         var roleFld = $('#roleFld').val();
 
+        if (util.isEmpty(username)) {
 
-        var user = {
-            username: username,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            role:roleFld
-        };
+            alert("Username is required");
 
-        userService
-            .createUser(user)
-            .then(findAllUsers);
+        }
+        else if(((util.isEmpty(firstName) || util.isEmpty(lastName)) || (util.isEmpty(password))))
+        {
+            alert("all feilds are mandatory");
+
+        }
+
+        else {
+
+
+            var user = {
+                username: username,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+                role: roleFld
+            };
+
+            userService
+                .createUser(user)
+                .then(findAllUsers);
+        }
     }
 
     function renderUsers(users) {
