@@ -7,6 +7,7 @@ function UserServiceClient() {
     this.register = register;
     this.login = login;
     this.searchUser = searchUser;
+    this.mailSender = mailSender;
     this.url =
         '/api/user';
     this.loginUrl =
@@ -17,6 +18,8 @@ function UserServiceClient() {
         '/api/profile';
     this.search =
         '/api/search';
+    this.email =
+        '/api/email';
     var self = this;
     
     
@@ -114,6 +117,16 @@ function UserServiceClient() {
 
 
             });
+    }
+
+    function mailSender() {
+
+        return fetch(self.email)
+            .then(function(response){
+                return response;
+            });
+
+
     }
 
     function searchUser(user) {
