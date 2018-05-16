@@ -56,10 +56,17 @@ public class UserService  {
     @PostMapping("/api/login")
     public User login(@RequestBody User user){
               User newUser = (User) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+             List<User> usr = repository.findUserByUsername(user.getUsername());
 
         if ((newUser!=null) && (newUser.getUsername().equals(user.getUsername()))){
 
             return newUser;
+        }
+        else if (usr.size()!=0){
+            User returnUser = new User();
+            returnUser.setId(-1);
+
+            return returnUser;
         }
         else {
             User returnUser = new User();

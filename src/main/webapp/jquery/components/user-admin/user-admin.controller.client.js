@@ -12,7 +12,7 @@
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
-        $('#searchUser').click(searchUser);
+        $('#searchUser').click(selectUser);
 
         findAllUsers();
     }
@@ -222,7 +222,7 @@
 
 
 
-    function searchUser() {
+    function selectUser() {
 
         var username = $('#usernameFld').val();
         var password = $('#passwordFld').val();

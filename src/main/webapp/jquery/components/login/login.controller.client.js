@@ -41,8 +41,12 @@
                         if (data.username===$username.val()) {
                             goURL(data.id);
                         }
-                        else {
+                        else if(data.id===-1) {
                             alert("Username/Password incorrect!");
+                        }
+                        else {
+                            alert("User not registered!");
+
                         }
                     }
 
