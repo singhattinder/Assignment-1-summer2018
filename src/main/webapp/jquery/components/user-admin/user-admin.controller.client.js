@@ -156,7 +156,6 @@
                 .searchUser(user)
                 .then(renderUser);
 
-
         }
 
         else {
