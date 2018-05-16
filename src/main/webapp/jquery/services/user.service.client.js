@@ -8,15 +8,15 @@ function UserServiceClient() {
     this.login = login;
     this.searchUser = searchUser;
     this.url =
-        'http://localhost:8080/api/user';
+        '/api/user';
     this.loginUrl =
-        'http://localhost:8080/api/login';
+        '/api/login';
     this.registerUrl =
-        'http://localhost:8080/api/register';
+        '/api/register';
     this.profile =
-        'http://localhost:8080/api/profile';
+        '/api/profile';
     this.search =
-        'http://localhost:8080/api/search';
+        '/api/search';
     var self = this;
     
     
