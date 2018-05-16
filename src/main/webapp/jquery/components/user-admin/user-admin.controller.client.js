@@ -213,13 +213,10 @@
         };
 
 
-        userService.updateUser(id, user).then(findAllUsers);
-
+        userService.updateProfile(id, user).then(findAllUsers);
 
 
     }
-
-
 
 
     function selectUser() {

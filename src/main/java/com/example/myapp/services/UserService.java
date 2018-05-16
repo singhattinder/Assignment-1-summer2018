@@ -43,7 +43,7 @@ public class UserService  {
     }
 
     @PostMapping("/api/register")
-    public User registerUser(@RequestBody User user, HttpServletResponse response){
+    public User register(@RequestBody User user){
 
           List<User> usr = repository.findUserByUsername(user.getUsername());
 
@@ -66,7 +66,7 @@ public class UserService  {
 
     @PostMapping("/api/login")
     public User login(@RequestBody User user){
-              User newUser = (User) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+              User newUser = (User) repository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
              List<User> usr = repository.findUserByUsername(user.getUsername());
 
         if ((newUser!=null) && (newUser.getUsername().equals(user.getUsername()))){
@@ -107,7 +107,7 @@ public class UserService  {
          }
 
     @PutMapping("/api/profile/{userId}")
-    public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser){
+    public User updateProfile(@PathVariable("userId") int id, @RequestBody User newUser){
 
         Optional<User> data =  repository.findById(id);
 
@@ -131,7 +131,7 @@ public class UserService  {
     }
 
     @PostMapping("/api/search")
-    public User searchUser(@RequestBody User user){
+    public User findUserByUsername(@RequestBody User user){
 
 
 

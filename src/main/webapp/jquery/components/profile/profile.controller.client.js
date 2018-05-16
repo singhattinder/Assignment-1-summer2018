@@ -61,7 +61,7 @@
 
     }
 
-    function updateUser() {
+    function updateProfile() {
 
         var user = {
             firstName:$firstName.val(),
@@ -78,7 +78,7 @@
         console.log("date of birth is " + user.dateOfBirth)
         //console.log("user id update user");
 
-        userService.updateUser(userIdGlobal, user).then(success);
+        userService.updateProfile(userIdGlobal, user).then(success);
 
     }
 

@@ -3,7 +3,7 @@ function UserServiceClient() {
     this.findAllUsers = findAllUsers;
     this.findUserById = findUserById;
     this.deleteUser = deleteUser;
-    this.updateUser = updateUser;
+    this.updateProfile = updateProfile;
     this.register = register;
     this.login = login;
     this.searchUser = searchUser;
@@ -97,7 +97,7 @@ function UserServiceClient() {
             });
     }
 
-    function updateUser(userId, user) {
+    function updateProfile(userId, user) {
 
         return fetch(self.profile + '/' + userId,{
             method:'put',

@@ -5,7 +5,7 @@
     var $verifyPassword;
     var $submitBtn;
     var userService = new UserServiceClient();
-
+    var util = new UserUtilitiesClient();
 
 
     function init() {
@@ -23,7 +23,13 @@
         verifyPassword =$verifyPassword.val();
 
 
-        if (newPassword === verifyPassword){
+        if (util.isEmpty(newPassword) || util.isEmpty(verifyPassword)){
+            alert("Enter new Password");
+
+        }
+
+        else if (newPassword === verifyPassword) {
+
             userService.resetPassword(newPassword).then(function (response) {
                 console.log(response.flag);
 
@@ -37,11 +43,14 @@
                 }
 
             });
-        }
 
+
+        }
         else {
+
             alert("Password didn't match!");
         }
+
 
 
     }
