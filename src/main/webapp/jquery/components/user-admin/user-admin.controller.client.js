@@ -23,19 +23,20 @@
     }
 
     function createUser() {
-        console.log('createUser');
 
         var username = $('#usernameFld').val();
         var password = $('#passwordFld').val();
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
+        var roleFld = $('#roleFld').val();
 
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            role:roleFld
         };
 
         userService
@@ -60,6 +61,9 @@
                 .html(user.firstName);
             clone.find('.lastName')
                 .html(user.lastName);
+            clone.find('#role')
+                .html(user.role);
+
 
             tbody.append(clone);
         }
@@ -84,36 +88,20 @@
             .parent()
             .attr('id');
 
-        $('#userId').click(function () {
-            var text = $('.username').text();
-            var input = $('<input type="text" placeholder="' + text + '" />')
-            $('.username').text('').append(input);
-            var text = $('.username').text();
-
-            var input = $('<input type="text" placeholder="' + text + '" />')
-            $('.firstName').text('').append(input);
-            var text = $('.firstName').text();
-
-            var input = $('<input type="text" placeholder="' + text + '" />')
-            $('.lastName').text('').append(input);
-            var text = $('.lastName').text();
-
-        })
-
-
-
-
-
-        console.log(userId);
+        return userId;
 
     }
-    
 
-    
     function searchUser() {
 
+        var username = $('#usernameFld').val();
 
-        
     }
+
+
+    
+
+    
+
 
 })();

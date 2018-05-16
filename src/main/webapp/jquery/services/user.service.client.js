@@ -12,6 +12,8 @@ function UserServiceClient() {
         'http://localhost:8080/api/login';
     this.registerUrl =
         'http://localhost:8080/api/register';
+    this.profile =
+        'http://localhost:8080/api/profile';
     var self = this;
     
     
@@ -68,7 +70,7 @@ function UserServiceClient() {
 
     function findUserById(userId) {
 
-        return fetch(self.url + '/' + userId)
+        return fetch(self.profile + '/' + userId)
             .then(function(response){
                 return response.json();
             });
@@ -87,7 +89,7 @@ function UserServiceClient() {
 
     function updateUser(userId, user) {
 
-        return fetch(self.url + '/' + userId,{
+        return fetch(self.profile + '/' + userId,{
             method:'put',
             body:JSON.stringify(user),
             headers:{

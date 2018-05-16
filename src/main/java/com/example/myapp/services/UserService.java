@@ -93,7 +93,7 @@ public class UserService  {
          repository.deleteById(id);
     }
 
-    @GetMapping("/api/user/{userId}")
+    @GetMapping("/api/profile/{userId}")
     public User findUserById(@PathVariable("userId") int id){
 
         Optional<User> data =  repository.findById(id);
@@ -105,7 +105,7 @@ public class UserService  {
 
          }
 
-    @PutMapping("/api/user/{userId}")
+    @PutMapping("/api/profile/{userId}")
     public User updateUser(@PathVariable("userId") int id, @RequestBody User newUser){
 
         Optional<User> data =  repository.findById(id);
@@ -121,7 +121,6 @@ public class UserService  {
                 user.setDateOfBirth(newUser.getDateOfBirth());
                 user.setRole(newUser.getRole());
                 repository.save(user);
-                System.out.print(user.getId());
                 return user;
             }
         }

@@ -22,6 +22,7 @@
         $phone = $('#phone');
         $email = $('#email');
         $lastName = $('#lastName');
+        $role = $('#role');
         $username = $('#username');
         $updateBtn = $('#updateBtn')
             .click(updateUser);
@@ -53,9 +54,10 @@
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
         $username.val(user.username);
-        $dateOfBirth.val(user.dateOfbirth);
+        $dateOfBirth.val(user.dateOfBirth);
         $phone.val(user.phone);
-        $email.valueOf(user.email);
+        $email.val(user.email);
+        $role.val(user.role);
 
     }
 
@@ -66,12 +68,14 @@
             lastName:$lastName.val(),
             username:$username.val(),
             id:userIdGlobal,
-            dateOfbirth:$dateOfBirth.val(),
+            dateOfBirth:$dateOfBirth.val(),
             phone:$phone.val(),
-            email:$email.val()
+            email:$email.val(),
+            role:$role.val()
+
         };
 
-
+        console.log("date of birth is " + user.dateOfBirth)
         //console.log("user id update user");
 
         userService.updateUser(userIdGlobal, user).then(success);
