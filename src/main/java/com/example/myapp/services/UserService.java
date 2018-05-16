@@ -96,7 +96,7 @@ public class UserService  {
         if(data.isPresent()){
             User user = data.get();
 
-            if (!(user.getFirstName().isEmpty() && user.getLastName().isEmpty())) {
+
                 user.setFirstName(newUser.getFirstName());
                 user.setLastName(newUser.getLastName());
                 user.setEmail(newUser.getEmail());
@@ -105,7 +105,7 @@ public class UserService  {
                 user.setRole(newUser.getRole());
                 repository.save(user);
                 return user;
-            }
+
         }
         return null;
 

@@ -35,17 +35,21 @@
     }
 
     function register() {
-        //console.log("register called");
 
-        if ((util.isEmpty($firstName.val() || util.isEmpty($lastName.val())) || (util.isEmpty($password.val()) || util.isEmpty($username.val())))) {
 
-            alert("All feilds are mandatory");
-            console.log(util.isEmpty($firstName.val()));
+
+        if (util.isEmpty($username.val())) {
+
+            alert("Username is required");
 
         }
+        else if(((util.isEmpty($firstName.val()) || util.isEmpty($lastName.val())) || (util.isEmpty($password.val()))))
+        {
+            alert("all feilds are mandatory");
+
+        }
+
         else {
-
-
 
         if ($password.val()===$verifyPassword.val()){
 
