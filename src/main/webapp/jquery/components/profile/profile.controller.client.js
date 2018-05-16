@@ -25,7 +25,7 @@
         $role = $('#role');
         $username = $('#username');
         $updateBtn = $('#updateBtn')
-            .click(updateUser);
+            .click(updateProfile);
         $logoutBtn = $('#logoutBtn')
             .click(logout);
 
@@ -75,8 +75,6 @@
 
         };
 
-        console.log("date of birth is " + user.dateOfBirth)
-        //console.log("user id update user");
 
         userService.updateProfile(userIdGlobal, user).then(success);
 
