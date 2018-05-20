@@ -3,6 +3,7 @@ package com.example.myapp.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -20,6 +21,9 @@ public class Course {
     private Date modified;
 
 
+
+    @OneToMany(mappedBy = "course")
+    private List<Module> modules;
 
     public int getId() {
         return id;
