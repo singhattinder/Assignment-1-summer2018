@@ -10,6 +10,7 @@ function UserServiceClient() {
     this.mailSender = mailSender;
     this.codeVerify = codeVerify;
     this.resetPassword = resetPassword;
+
     this.url =
         '/api/user';
     this.loginUrl =
@@ -85,6 +86,7 @@ function UserServiceClient() {
                 return response.json();
             });
     }
+
 
 
 
