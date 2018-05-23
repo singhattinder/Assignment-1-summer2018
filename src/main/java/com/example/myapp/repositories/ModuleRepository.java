@@ -12,10 +12,4 @@ public interface ModuleRepository extends CrudRepository<Module, Integer> {
 
 
 
-
-
-
-
-
-
 }

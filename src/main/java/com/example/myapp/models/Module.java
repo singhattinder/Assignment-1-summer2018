@@ -2,7 +2,9 @@ package com.example.myapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Module {
@@ -16,6 +18,14 @@ public class Module {
     private Course course;
 
     private String title;
+
+    @OneToMany(mappedBy = "module")
+    private List<Lesson> lessons;
+
+
+
+
+
 
     public int getId() {
         return id;
@@ -41,6 +51,13 @@ public class Module {
         this.course = course;
     }
 
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lesson) {
+        this.lessons = lessons;
+    }
 
 
 

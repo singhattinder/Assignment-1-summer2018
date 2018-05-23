@@ -10,13 +10,19 @@ public class Course {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
+
     private String title;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
+
     @OneToMany(mappedBy="course")
     private List<Module> modules;
+
+
     public int getId() {
         return id;
     }
