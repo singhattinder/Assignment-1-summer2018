@@ -19,7 +19,7 @@ public class Module {
 
     private String title;
 
-    @OneToMany(mappedBy = "module")
+    @OneToMany(mappedBy = "module" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Lesson> lessons;
 
 
