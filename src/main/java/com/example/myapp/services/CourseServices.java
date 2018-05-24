@@ -18,6 +18,11 @@ public class CourseServices {
         return courseRepository.findAll();
     }
 
+    @GetMapping("/api/course/{courseId}")
+    public Course findCourseById(@PathVariable("courseId") int id) {
+        return courseRepository.findCourseById(id);
+    }
+
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
         return courseRepository.save(course);
