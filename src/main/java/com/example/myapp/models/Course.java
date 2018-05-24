@@ -1,6 +1,9 @@
 package com.example.myapp.models;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -13,10 +16,10 @@ public class Course {
 
     private String title;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date created;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date modified;
 
     @OneToMany(mappedBy="course" , cascade = CascadeType.ALL, orphanRemoval = true)
