@@ -26,13 +26,13 @@ public class WidgetService {
     @PostMapping("/api/widget/save")
     public void saveAllWidgets(@RequestBody List<Widget> widgets){
 
+        widgetRepository.deleteAll();
+
         for (Widget widget: widgets
              ) {
             widgetRepository.save(widget);
             
         }
-
     }
-
 
 }

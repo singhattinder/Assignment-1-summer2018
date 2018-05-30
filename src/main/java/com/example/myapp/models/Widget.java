@@ -13,6 +13,17 @@ public class Widget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String text;
+    private String widgetType;
+
+    public String getWidgetType() {
+        return widgetType;
+    }
+
+    public void setWidgetType(String widgetType) {
+        this.widgetType = widgetType;
+    }
+
+
 
 
 
